@@ -1,0 +1,64 @@
+1)import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int []arr = new int[]{1,2,3,4,5};
+        int []arr1 = new int[]{5,4,3,2,1};
+        boolean ret = equals(arr, arr1);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+    public static boolean equals(int[] arr, int[] arr1) {
+        if (arr.length != arr1.length)
+            return false;
+
+
+        int q = arr.length;
+        int[] arrBalance = new int[300];
+        for (int i = 0; i < q; i++) {
+            int A = arr[i];
+            arrBalance[A]++;
+            int B = arr1[i];
+            arrBalance[B]--;
+        }
+        for (int i = 0; i < arrBalance.length; i++) {
+            if (arrBalance[i] != 0) return false;
+        }
+        return true;
+            }
+}
+
+
+2)import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+if (a.length() != b.length())
+     return false;
+
+     a = a.toLowerCase();
+     b = b.toLowerCase();
+     int q = a.length();
+    int[] arrBalance = new int[300];
+    for (int i = 0; i < q; i++) {
+        char A = a.charAt(i);
+        arrBalance[A]++;
+        char B = b.charAt(i);
+        arrBalance[B]--;
+    }
+    for (int i = 0; i < arrBalance.length; i++) {
+        if (arrBalance[i] != 0) return false;
+    }
+    return true;
+}
+  public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
